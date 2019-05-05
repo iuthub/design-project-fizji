@@ -11,6 +11,33 @@
 
         <!-- Styles -->
         <style>
+        * {
+            box-sizing: border-box;
+            }
+
+            body {
+            margin: 0;
+            font-family: Arial;
+            font-size: 17px;
+            }
+
+            #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%; 
+            min-height: 100%;
+            }
+
+            .content {
+            position: fixed;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            width: 100%;
+            padding: 20px;
+            }
+
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -24,20 +51,12 @@
                 height: 100vh;
             }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
+                z-index: 99;
+
             }
 
             .content {
@@ -56,15 +75,31 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                z-index: 99;
             }
 
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .screen-padder.full {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: calc(100% - 0px);
+                height: calc(100% - 0px);
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            
+            <!-- <video autoplay muted loop id="myVideo">
+            <source src="https://d32ujqjov16ho0.cloudfront.net/direct_uploads/1473692861_Skyline.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video> -->
+
+        <div class="content">
+            <h1>Fizji Shop
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -78,22 +113,29 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+            </h1>
+            
+            <p>
+            Easy. Lean. Joy.
+            </p>
         </div>
+
+        </div>
+        
+        <script>
+        var video = document.getElementById("myVideo");
+        var btn = document.getElementById("myBtn");
+
+        function myFunction() {
+        if (video.paused) {
+            video.play();
+            btn.innerHTML = "Pause";
+        } else {
+            video.pause();
+            btn.innerHTML = "Play";
+        }
+        }
+        </script>
+
     </body>
 </html>
